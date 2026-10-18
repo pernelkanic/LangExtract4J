@@ -3,8 +3,8 @@ package com.langextract.utils;
 import java.util.Collection;
 import java.util.Map;
 
-public class langUtils {
-    public boolean isNullOrEmpty(Object object) {
+public class LangUtils {
+    public static boolean isNullOrEmpty(Object object) {
         return switch (object) {
             case null -> true;
             case String s -> s.isEmpty();
