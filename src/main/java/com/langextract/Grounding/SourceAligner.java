@@ -1,15 +1,14 @@
-package com.langextract.grounding;
+package com.langextract.Grounding;
 
-import com.langextract.models.CharacterIndex;
-import com.langextract.models.ExtractionData;
-import com.langextract.models.MatchType;
-import com.langextract.utils.LangUtils;
+import com.langextract.Models.CharacterIndex;
+import com.langextract.Models.ExtractionData;
+import com.langextract.Models.MatchType;
+import com.langextract.Utils.LangUtils;
 
-public class SourceAligner {
+public class SourceAligner implements Aligner{
 
-
-    public ExtractionData align(String source, ExtractionData llmData, Integer chunkStartInx
-    ) {
+    @Override
+    public ExtractionData align(String source, ExtractionData llmData, Integer chunkStartInx) throws Exception {
         if (LangUtils.isNullOrEmpty(source) || llmData == null  || chunkStartInx == null || LangUtils.isNullOrEmpty(llmData.contextText()) || LangUtils.isNullOrEmpty(llmData.extractionText())) {
             return null;
         }

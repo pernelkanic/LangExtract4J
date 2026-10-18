@@ -1,4 +1,4 @@
-package com.langextract.models;
+package com.langextract.Models;
 
 import java.util.Map;
 

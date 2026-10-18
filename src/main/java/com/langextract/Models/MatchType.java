@@ -1,4 +1,4 @@
-package com.langextract.models;
+package com.langextract.Models;
 
 public enum MatchType{
     MATCH_EXACT(1),

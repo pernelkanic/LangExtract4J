@@ -1,4 +1,4 @@
-package com.langextract.utils;
+package com.langextract.Utils;
 
 import java.util.Collection;
 import java.util.Map;
