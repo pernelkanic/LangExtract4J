@@ -12,6 +12,9 @@ public class LangUtils {
             case Map<?, ?> map -> map.isEmpty();
             default -> false;
         };
+    }
 
+    public static <T> boolean isArray(T obj){
+        return !isNullOrEmpty(obj) && obj.getClass().isArray();
     }
 }
