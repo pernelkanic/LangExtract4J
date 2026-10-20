@@ -9,7 +9,7 @@ import java.util.List;
 public class BasicTextChunker implements TextChunker{
     private final int chunkSize;
     private final int overLap;
-    BasicTextChunker(int chunkSize, int overLap) throws Exception {
+    public BasicTextChunker(int chunkSize, int overLap) throws Exception {
         if(LangUtils.isNullOrEmpty(chunkSize) || LangUtils.isNullOrEmpty(overLap)){
            throw new Exception("The chunkSize or overLap is empty or null");
         }
