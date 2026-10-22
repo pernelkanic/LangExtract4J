@@ -1,4 +1,4 @@
-package com.langextract.Llm;
+package com.langextract.Llm.Clients;
 
 public class LlmClientException extends Exception {
     public LlmClientException(String message) {
