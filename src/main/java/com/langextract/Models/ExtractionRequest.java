@@ -1,17 +1,25 @@
 package com.langextract.Models;
 
+import com.langextract.Utils.LangUtils;
 import java.util.List;
-import java.util.Objects;
 
 /** User-provided text, instructions, and optional examples for extraction. */
 public record ExtractionRequest(
-        String text,
-        String promptDescription,
-        List<ExampleData> examples
+  String text,
+  String promptDescription,
+  List<ExampleData> examples
 ) {
-    public ExtractionRequest {
-        Objects.requireNonNull(text, "text must not be null");
-        Objects.requireNonNull(promptDescription, "promptDescription must not be null");
-        examples = examples == null ? List.of() : List.copyOf(examples);
+  public ExtractionRequest {
+    if (LangUtils.isNullOrEmpty(text) || text.isBlank()) {
+      throw new IllegalArgumentException("text must not be blank");
     }
+    if (
+      LangUtils.isNullOrEmpty(promptDescription) || promptDescription.isBlank()
+    ) {
+      throw new IllegalArgumentException("promptDescription must not be blank");
+    }
+    examples = LangUtils.isNullOrEmpty(examples)
+      ? List.of()
+      : List.copyOf(examples);
+  }
 }
