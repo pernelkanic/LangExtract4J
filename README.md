@@ -1,5 +1,5 @@
 # LangExtract4J
-LangExtract4J is a Java library for langextract.
+LangExtract4J is a Java library for [langextract](https://github.com/google/langextract).
 
 ## For example:
 Arjun joined Microsoft in 2023.
