@@ -43,7 +43,6 @@ public class BasicTextChunker implements TextChunker {
       }
 
       int nextStartIndex = Math.max(startIndex + 1, endIndex - overLap);
-      // If the overlap starts inside a word, advance to the next word boundary.
       while (
         nextStartIndex > 0 &&
         nextStartIndex < data.length() &&
@@ -76,7 +75,6 @@ public class BasicTextChunker implements TextChunker {
       return targetEndIndex;
     }
 
-    // Prefer moving backward to a word boundary so chunks stay close to chunkSize.
     int previousWhitespace = targetEndIndex - 1;
     while (
       previousWhitespace > startIndex &&
@@ -88,7 +86,6 @@ public class BasicTextChunker implements TextChunker {
       return previousWhitespace;
     }
 
-    // A single word exceeds chunkSize; keep it whole by extending this chunk.
     int nextWhitespace = targetEndIndex;
     while (
       nextWhitespace < text.length() &&

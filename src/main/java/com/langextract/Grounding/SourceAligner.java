@@ -2,9 +2,7 @@ package com.langextract.Grounding;
 
 import com.langextract.Models.CharacterIndex;
 import com.langextract.Models.ExtractionData;
-import com.langextract.Models.MatchNode;
 import com.langextract.Models.MatchType;
-import com.langextract.Models.TextToken;
 import com.langextract.Utils.LangUtils;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,8 +11,10 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/** Finds each extracted phrase in the source text. */
 public class SourceAligner implements Aligner {
 
+  // Keep words and punctuation as separate tokens.
   private static final Pattern TOKEN_PATTERN = Pattern.compile(
     "[\\p{L}\\p{N}_]+|[^\\s]"
   );
@@ -45,6 +45,7 @@ public class SourceAligner implements Aligner {
 
     List<TextToken> sourceTokens = tokenize(source);
     List<MatchNode> allMatches = new ArrayList<>();
+    // Try source positions in extraction order so repeated phrases can be placed correctly.
     for (
       int extractionIndex = 0;
       extractionIndex < extractions.size();
@@ -92,6 +93,7 @@ public class SourceAligner implements Aligner {
       }
     }
 
+    // Use the set of matches that covers the most extracted words.
     MatchNode best = null;
     for (MatchNode match : allMatches) {
       if (LangUtils.isNullOrEmpty(best) || match.score() > best.score()) {
@@ -104,6 +106,7 @@ public class SourceAligner implements Aligner {
       ExtractionData original = extractions.get(best.extractionIndex());
       TextToken firstToken = sourceTokens.get(best.startToken());
       TextToken lastToken = sourceTokens.get(best.endToken() - 1);
+      // Add the chunk start so these positions refer to the full document.
       int startIndex = Math.addExact(chunkStartInx, firstToken.startIndex());
       int endIndex = Math.addExact(chunkStartInx, lastToken.endIndex());
       aligned[best.extractionIndex()] = buildResponse(
@@ -117,6 +120,7 @@ public class SourceAligner implements Aligner {
 
     List<ExtractionData> results = new ArrayList<>(extractions.size());
     for (int i = 0; i < extractions.size(); i++) {
+      // Keep extractions that could not be found, marked as unmatched.
       results.add(
         LangUtils.isNullOrEmpty(aligned[i])
           ? buildUnmatchedResponse(extractions.get(i))

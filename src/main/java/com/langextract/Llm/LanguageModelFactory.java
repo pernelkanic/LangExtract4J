@@ -11,6 +11,8 @@ public class LanguageModelFactory {
   private static final ProviderRegistry provider =
     ProviderRegistry.getProviderRegistryInstance();
 
+  private LanguageModelFactory() {}
+
   public static LlmClient create(ModelConfig modelConfig) throws Exception {
     LanguageModelProviders modelProvider = provider.resolve(
       modelConfig.modelId()

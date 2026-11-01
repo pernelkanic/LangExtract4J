@@ -3,7 +3,6 @@ package com.langextract.Models;
 import com.langextract.Utils.LangUtils;
 import java.util.List;
 
-/** User-provided text, instructions, and optional examples for extraction. */
 public record ExtractionRequest(
   String text,
   String promptDescription,

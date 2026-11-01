@@ -7,7 +7,6 @@ import com.langextract.Models.ExampleData;
 import com.langextract.Models.ExtractionRequest;
 import com.langextract.Utils.LangUtils;
 
-/** Builds the prompt sent to a language model for an extraction request. */
 public class PromptBuilder {
 
   private static final String RESPONSE_FORMAT = """
@@ -47,7 +46,7 @@ public class PromptBuilder {
     this(new ObjectMapper());
   }
 
-  public PromptBuilder(ObjectMapper objectMapper) {
+  private PromptBuilder(ObjectMapper objectMapper) {
     if (LangUtils.isNullOrEmpty(objectMapper)) {
       throw new IllegalArgumentException("objectMapper must not be null");
     }

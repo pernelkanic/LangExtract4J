@@ -6,6 +6,8 @@ import java.util.Map;
 
 public class LangUtils {
 
+  private LangUtils() {}
+
   public static boolean isNullOrEmpty(Object object) {
     return switch (object) {
       case null -> true;

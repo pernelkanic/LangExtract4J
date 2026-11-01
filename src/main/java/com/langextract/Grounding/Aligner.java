@@ -4,17 +4,14 @@ import com.langextract.Models.ExtractionData;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface Aligner {
+interface Aligner {
   ExtractionData align(
     String source,
     ExtractionData llmData,
     Integer chunkStartInx
   ) throws Exception;
 
-  /**
-   * Aligns a group together so repeated mentions can be placed in extraction order.
-   * Implementations that only support single items keep working through this default.
-   */
+  /** Aligns a group of extractions in source order. */
   default List<ExtractionData> alignAll(
     String source,
     List<ExtractionData> extractions,

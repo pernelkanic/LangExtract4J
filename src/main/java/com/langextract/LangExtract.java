@@ -44,7 +44,7 @@ public class LangExtract implements AutoCloseable {
     );
   }
 
-  public LangExtract(
+  LangExtract(
     TextChunker textChunker,
     PromptBuilder promptBuilder,
     LlmClient llmClient,
@@ -85,8 +85,6 @@ public class LangExtract implements AutoCloseable {
       chunks.size()
     );
     for (ChunkData chunk : chunks) {
-      //debug
-      //System.out.println(chunk);
       futures.add(
         CompletableFuture.supplyAsync(() -> {
           try {
