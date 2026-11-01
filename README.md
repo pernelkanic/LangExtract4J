@@ -36,7 +36,7 @@ What each step does
   extraction more than once, so results need deduplication.
 - Add some custom exceptions and Loggers.
 
-##Sample Output
+## Sample Output
 <img width="1760" height="155" alt="image" src="https://github.com/user-attachments/assets/b1bf9299-8420-44f5-b1a3-e9a364e5401d" />
 
 ```
