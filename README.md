@@ -35,3 +35,9 @@ What each step does
 - Remove duplicates: Overlapping chunks can produce the same
   extraction more than once, so results need deduplication.
 - Add some custom exceptions and Loggers.
+
+##Sample Output
+<img width="1760" height="155" alt="image" src="https://github.com/user-attachments/assets/b1bf9299-8420-44f5-b1a3-e9a364e5401d" />
+
+```Document: AnnotatedDocument[text=Romeo met Juliet in Verona. Romeo trusts Juliet., extractions=[ExtractionData[extractionClass=character name, extractionText=Romeo, attributes={}, contextText=null, chInx=CharacterIndex[startIndex=0, endIndex=5], matchType=MATCH_EXACT], ExtractionData[extractionClass=character name, extractionText=Juliet, attributes={}, contextText=null, chInx=CharacterIndex[startIndex=10, endIndex=16], matchType=MATCH_EXACT], ExtractionData[extractionClass=geographical location, extractionText=Verona, attributes={}, contextText=null, chInx=CharacterIndex[startIndex=20, endIndex=26], matchType=MATCH_EXACT], ExtractionData[extractionClass=character name, extractionText=Romeo, attributes={}, contextText=null, chInx=CharacterIndex[startIndex=28, endIndex=33], matchType=MATCH_EXACT], ExtractionData[extractionClass=character name, extractionText=Juliet, attributes={}, contextText=null, chInx=CharacterIndex[startIndex=41, endIndex=47], matchType=MATCH_EXACT]]]
+```
